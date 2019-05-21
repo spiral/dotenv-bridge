@@ -1,0 +1,30 @@
+{
+  "name": "spiral/dotenv-bridge",
+  "type": "library",
+  "description": "Spiral Framework: DotEnv Loader",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Wolfy-J",
+      "email": "wolfy.jd@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "spiral/boot": "^1.0",
+    "vlucas/phpdotenv": "^3.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Spiral\\DotEnv\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Spiral\\DotEnv\\Tests\\": "tests/"
+    }
+  }
+}
