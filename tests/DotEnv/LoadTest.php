@@ -41,4 +41,20 @@ class LoadTest extends TestCase
 
         $this->assertSame('value', $e->get('KEY'));
     }
+
+    public function testFoundCustom()
+    {
+        $e = new Environment([
+            'DOTENV_PATH' => __DIR__ . '/../.env.custom'
+        ]);
+
+        $d = new Directories([
+            'root' => __DIR__ . '/../'
+        ]);
+
+        $b = new DotenvBootloader();
+        $b->boot($d, $e);
+
+        $this->assertSame('custom_value', $e->get('KEY'));
+    }
 }
