@@ -22,11 +22,16 @@ final class DotenvBootloader extends Bootloader
      */
     public function boot(DirectoriesInterface $dirs, EnvironmentInterface $env)
     {
-        if (!file_exists($dirs->get('root') . '.env')) {
+        $dotenvPath = $env->get('DOTENV_PATH', $dirs->get('root') . '.env');
+
+        if (!file_exists($dotenvPath)) {
             return;
         }
 
-        foreach (Dotenv::create($dirs->get('root'))->load() as $key => $value) {
+        $path = dirname($dotenvPath);
+        $file = basename($dotenvPath);
+
+        foreach (Dotenv::create($path, $file)->load() as $key => $value) {
             $env->set($key, $value);
         }
     }
