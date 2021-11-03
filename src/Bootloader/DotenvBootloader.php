@@ -33,8 +33,8 @@ final class DotenvBootloader extends Bootloader
         $path = dirname($dotenvPath);
         $file = basename($dotenvPath);
 
-        foreach (Dotenv::create($path, $file)->load() as $key => $value) {
-            $env->set($key, $value);
-        }
+		foreach (Dotenv::createImmutable($path, $file)->load() as $key => $value) {
+			$env->set($key, $value);
+		}
     }
 }
