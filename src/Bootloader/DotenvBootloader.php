@@ -22,9 +22,9 @@ final class DotenvBootloader extends Bootloader
      * @param DirectoriesInterface $dirs
      * @param EnvironmentInterface $env
      */
-    public function boot(DirectoriesInterface $dirs, EnvironmentInterface $env)
+    public function boot(DirectoriesInterface $dirs, EnvironmentInterface $env): void
     {
-        $dotenvPath = $env->get('DOTENV_PATH', $dirs->get('root') . '.env');
+        $dotenvPath = (string)$env->get('DOTENV_PATH', $dirs->get('root') . '.env');
 
         if (!file_exists($dotenvPath)) {
             return;
